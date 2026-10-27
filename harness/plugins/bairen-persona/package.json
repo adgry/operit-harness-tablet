@@ -1,0 +1,28 @@
+{
+  "name": "bairen-persona",
+  "version": "4.0.1",
+  "private": true,
+  "type": "module",
+  "description": "白刃破甲人格合同、24 类场景规则矩阵与 bairen-pentest 技能入口（Operit Harness 内置版）",
+  "license": "MIT",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "lib/client.js",
+    "scenarios.json",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "id": "bairen-persona",
+    "name": "白刃破甲",
+    "version": "4.0.1",
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": { "platform": "web" }
+  }
+}

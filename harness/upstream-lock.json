@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "node": {
+    "version": "24.22.1",
+    "source": "https://nodejs.org/dist/v24.22.1/SHASUMS256.txt",
+    "linuxArm64Sha256": "dbabf7a1cbf947e6059ffad2c27b80041db97dea1e553b62afdee7f13fca336e",
+    "linuxX64Sha256": "6c172a9ab6718f7b801fb5a7bd486af2ee5e32758086a04b84fcce2aa77095e6"
+  },
+  "packages": [
+    {
+      "name": "@deepseek-ai/dsh",
+      "version": "0.2.1-rc.2",
+      "role": "engine",
+      "file": "deepseek-ai-dsh-0.2.1-rc.2.tgz",
+      "source": "https://github.com/deepseek-ai/deepseek-harness",
+      "registryUrl": "https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-0.2.1-rc.2.tgz",
+      "integrity": "sha512-tvY+yhfKRifthbqPe/OK0AYxM5ZkvqfYq/jMYgJcEUxiRRL1Vwra3Ti5TB6AXgSWQdiPHYh/Vp6SJa9yHwMNuw==",
+      "sha256": "40e3d025c0240c4316ff42dee9bedc7709c0fb38aea10543b47076ed2af52e1d"
+    },
+    {
+      "name": "pnpm",
+      "version": "11.7.0",
+      "role": "engine",
+      "file": "pnpm-11.7.0.tgz",
+      "source": "https://github.com/pnpm/pnpm",
+      "registryUrl": "https://registry.npmjs.org/pnpm/-/pnpm-11.7.0.tgz",
+      "integrity": "sha512-GcyFLBIMcSV2DyRD7mvgyltA+fUFmN4aCaHxd1A+AQ5Xwjx3ZG4B52HeWb+HT7IqM5jDOrlpH8E+uUa28PTWIA==",
+      "sha256": "deafa7ec98a1218b6a047289b92fbe2395c1e22d3495bb711653013218ee15ee"
+    },
+    {
+      "name": "dsh-claude-style",
+      "version": "0.18.2",
+      "role": "plugin",
+      "file": "dsh-claude-style-0.18.2.tgz",
+      "source": "https://github.com/Nwflower/dsh-claude-style",
+      "registryUrl": "https://registry.npmjs.org/dsh-claude-style/-/dsh-claude-style-0.18.2.tgz",
+      "integrity": "sha512-jUSgT6TJkW/XPvpuj83lfDz2pnu/KNQU3D+yqmAVgWUPGLITFpwu6RxZ/Ftg5Jyf4Z0fPfv5w75UPqW4FrA5nQ==",
+      "sha256": "bbbc951c17a5e7693db841b985f2d7ed92df57cee394912609176946d1625811"
+    },
+    {
+      "name": "dsh-our-free-model",
+      "version": "2.5.9",
+      "role": "plugin",
+      "file": "dsh-our-free-model-2.5.9.tgz",
+      "source": "https://github.com/Ebony-Vinyl/dsh-our-free-model",
+      "commit": "482500f79ecbf92f581e1d2e98f170701a743083",
+      "sha256": "2f0af921f796c16749806c4d82d1614b4af20c3a0f405a042243c65440c59cd1"
+    },
+    {
+      "name": "operit-android-bridge",
+      "version": "0.1.0",
+      "role": "plugin",
+      "file": "operit-android-bridge-0.1.0.tgz",
+      "source": "plugins/operit-android-bridge",
+      "sha256": "3ffb640312058672580f07acd8caaab1a706f5045d6f974fd3c641416a2902ad"
+    },
+    {
+      "name": "operit-tablet-ui",
+      "version": "0.1.2",
+      "role": "plugin",
+      "file": "operit-tablet-ui-0.1.2.tgz",
+      "source": "plugins/operit-tablet-ui",
+      "sha256": "79da45c3d4dc2c4a5f78260ca5f7512aef246c68a271806f8a03e192daf520e7"
+    },
+    {
+      "name": "bairen-persona",
+      "version": "4.0.1",
+      "role": "plugin",
+      "file": "bairen-persona-4.0.1.tgz",
+      "source": "plugins/bairen-persona",
+      "sha256": "d4ab4ddf0472f9f0e0f58da1994541d8aef903841f8b8fb7e34b68ae955ce0f0"
+    }
+  ],
+  "engineLockSha256": "1398938a90a4340fec6efb4f7ae459d773d1d1079e16f6c82ac94a056f06164b",
+  "engineManifestSha256": "a395338a9f7a9ed285a18051fa17f1b93fcd075fbc153d9b648b2edbf3347281"
+}

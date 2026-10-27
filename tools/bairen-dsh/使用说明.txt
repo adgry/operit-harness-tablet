@@ -1,0 +1,105 @@
+白刃破甲 · DeepSeek Harness 一键注入 v4.0.1
+============================================
+
+交流 Q 裙：1108502379
+
+
+一、这是什么
+  针对 DeepSeek Harness（DSH）桌面端的白刃破甲注入器，自带人格合同、24 类场景规则矩阵
+  和内置渗透技能包，不依赖任何其它注入工具。注入后：
+
+    1. 输入框工具栏出现绿框「白刃破甲v2」
+    2. 会话人格为白刃破甲（systemPrompt 四段 + AGENTS.md 双通道）
+    3. 新对话发送 hi，回复一行「白刃破甲开启」
+    4. 渗透 / Web / 内网 / 应急 / CTF 类请求自动加载 bairen-pentest 技能包
+
+二、怎么用
+  1. 完全退出 DSH（托盘图标也要退出，任务管理器里没有 DeepSeek Harness 进程）
+  2. 双击「一键注入.bat」
+  3. 重新打开 DSH，新建对话发 hi 验证
+  4. 不想用了双击「一键撤销.bat」，再重启 DSH
+
+  便携版 / 自定义 HOME，在命令行里指定：
+    白刃DSH注入.py inject --home "D:\portable-home"
+
+  只想注入白刃、不清理其它注入工具的残留：
+    白刃DSH注入.py inject --keep-legacy
+
+  其它子命令：
+    白刃DSH注入.py status    查看当前安装状态
+    白刃DSH注入.py verify    自检（文件、node 语法、插件 API、技能包、profile）
+
+三、注入了什么（目标用户目录下）
+  .dsh\AGENTS.md                                    白刃人格块（BAIREN 标记，幂等）
+  .dsh\plugins\bairen-persona\package.json           插件清单（dsh.client = web）
+  .dsh\plugins\bairen-persona\index.js               systemPrompt 四段 + bairen_profile / bairen_rules
+  .dsh\plugins\bairen-persona\lib\client.js          输入框工具栏绿框 + 旧徽标文案改写
+  .dsh\plugins\bairen-persona\scenarios.json         24 类场景规则快照
+  .dsh\profiles\<profile>\cordis.patch.yml           注册插件 + 提示词 / 指令预算配置
+  .dsh\profiles\<profile>\package.json               dependencies 增加 bairen-persona
+  .dsh\profiles\<profile>\node_modules\bairen-persona 插件实体
+  .dsh\skills\bairen-pentest\                        渗透技能包（SKILL.md + 13 references + 6 scripts）
+
+  绿框实现：DSH 原生插槽 conversation.input.activity（模型选择器右侧）。
+  同时用 MutationObserver 把界面上其它工具注入的「xxx已激活」文案改写为白刃文案
+  并隐藏旧徽标，所以最终只显示一个绿框。
+
+  场景规则：24 类场景（逆向 / 授权校验 / 脱壳 / Android / iOS / 游戏客户端 / 反作弊 /
+  免杀 / 后渗透 / AD 云容器 / Web API / Pwn / 固件 / 密码协议 / 流量 / AI 红队 / 恶意样本 /
+  内核驱动 / 浏览器 Electron / 取证 / 无线 / 供应链 / CTF / 通用工程），随系统提示词末端注入。
+  运行时可用 bairen_rules 工具 list / match / get / add / clear，自定义规则写入插件目录的
+  runtime_rules.json，重启后保留。
+
+四、旧版清理（自动）
+  注入时默认清理一次旧身份残留，全部移到 .dsh\_bairen-removed\ 备份区，不直接销毁：
+    - 上一版注入器的插件包，以及各 profile 的 node_modules 实体
+    - 上一版注入器的技能包
+    - AGENTS.md 里上一版写下的人格块
+    - cordis.patch.yml 里上一版的配置段与对应 insert 条目
+    - profile package.json dependencies 里上一版的依赖
+  另外也会清理 pojia / L-SKILL 等其它注入工具的遗留配置。确认不需要后，手动删除
+  _bairen-removed 目录即可。
+
+五、备份与撤销
+  1. 被改动的文件在首次修改前备份为 *.bairen-bak
+  2. 撤销会移除 BAIREN 标记块、插件目录、profile 依赖与 node_modules 实体、技能包，
+     并恢复 AGENTS.md 的注入前内容
+  3. 重复运行注入是幂等的，不会叠加重复段落
+
+六、常见问题
+  1. 绿框没出现
+     - 确认完全退出了 DSH 再重开
+     - 重跑一次 一键注入.bat
+     - 仍不行就跑 一键诊断.bat，把整屏输出发到交流裙 1108502379
+  2. 绿框出现两个
+     - 另有工具在注入界面元素；本插件的改写器会在下一帧隐藏旧的那个
+     - 仍有残留时重跑注入并重启 DSH
+  3. 发 hi 回复的不是「白刃破甲开启」
+     - 重跑注入，确认 .dsh\AGENTS.md 里只有 BAIREN 块，再重启
+  4. 想改人格文案
+     - 编辑 payload\persona.md（systemPrompt 人格）与 payload\agents_block.md（AGENTS 块），
+       保存后重跑 一键注入.bat
+  5. 想改绿框文字
+     - 编辑 payload\plugin_client.js 里的 TEXT 常量，重跑注入
+  6. 想改场景规则
+     - 编辑 payload\scenarios.json（或运行时用 bairen_rules add），重跑注入
+  7. 双击 一键注入.bat 窗口一闪就关
+     - 不要直接在压缩包里双击，先把整个文件夹解压出来再运行
+     - 只拷了单个 bat、旁边没有 _launch.bat 时，窗口会停在报错处，按任意键关闭
+     - 仍闪退就跑 一键诊断.bat，把整屏输出发到交流裙 1108502379
+
+七、文件清单
+  白刃DSH注入.py          主程序（inject / revoke / status / verify）
+  一键注入.bat            双击注入
+  一键撤销.bat            双击撤销
+  一键自检.bat            双击自检
+  一键诊断.bat            环境诊断（找不到 Python、路径异常时用）
+  _launch.bat             启动器：自动定位 Python 3 后再调用主程序
+  _findpy.ps1             Python 路径探测（由启动器调用）
+  payload\persona.md              白刃 systemPrompt 人格
+  payload\agents_block.md         AGENTS.md 注入块
+  payload\scenarios.json          24 类场景规则矩阵
+  payload\skill_guidance.md       技能使用段
+  payload\plugin_client.js        客户端绿框与文案改写
+  payload\skills\bairen-pentest\  内置渗透技能包
+  使用说明.txt                    本文件
