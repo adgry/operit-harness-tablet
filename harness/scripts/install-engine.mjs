@@ -1,0 +1,11 @@
+import { readFile, mkdir, copyFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { spawnSync } from 'node:child_process';
+const [root, prefix] = process.argv.slice(2);
+const lock = JSON.parse(await readFile(join(root, 'upstream-lock.json'), 'utf8'));
+await mkdir(join(prefix, 'packages'), {recursive:true});
+for (const file of ['package.json','package-lock.json']) await copyFile(join(root,'engine',file),join(prefix,file));
+for (const p of lock.packages.filter(p => p.role === 'engine')) await copyFile(join(root,'packages',p.file),join(prefix,'packages',p.file));
+const result = spawnSync('npm', ['ci', '--prefix', prefix, '--no-audit', '--no-fund'], {stdio:'inherit'});
+if (result.error) throw result.error;
+if (result.status !== 0) process.exitCode = result.status ?? 1;

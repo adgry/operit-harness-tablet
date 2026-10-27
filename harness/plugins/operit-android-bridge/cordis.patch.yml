@@ -1,0 +1,14 @@
+- insert:
+    - id: operit-native-mcp
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: operit
+        transport: streamable-http
+        url: !!js process.env.OPERIT_BRIDGE_URL
+        headers:
+          Authorization: !!js '`Bearer ${process.env.OPERIT_BRIDGE_TOKEN}`'
+        toolCallTimeoutMs: 180000
+        failOnStartupError: true
+- id: our-free-model
+  config:
+    distribution: managed

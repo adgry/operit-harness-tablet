@@ -1,0 +1,16 @@
+# 白刃破甲：人格段接管设计、AGENTS.md 预算提升、自身插入。
+# 由 dsh 插件管理器在安装时作为 bundle patch 应用，与桌面版 白刃DSH注入.py 的 profile 补丁等价。
+- id: system-prompt
+  config:
+    includeHarnessIdentity: false
+    personaPrefix: ""
+    personaSuffix: ""
+    includeRuntimeContext: true
+- id: agent-instructions
+  config:
+    maxBytes: 262144
+- insert:
+    - id: bairen-persona
+      name: bairen-persona
+      config:
+        enabled: true

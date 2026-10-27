@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-22",
+  "sourceCommit": "dcc0ecd",
+  "apk": {
+    "file": "Operit-Harness-arm64.apk",
+    "bytes": 288541306,
+    "sha256": "62df4ceed4696b3212b5f7151d310d381584e8543e348dd95c4de0659196b376",
+    "signature": "APK v2 verified",
+    "package": "com.ai.assistance.operit.clone",
+    "abi": "arm64-v8a"
+  },
+  "environment": {
+    "kind": "owned Android emulator",
+    "sdk": 36,
+    "android": 16,
+    "appUid": 10213,
+    "screenPixels": [
+      2560,
+      1600
+    ],
+    "density": 2,
+    "webViewCss": [
+      1280,
+      743
+    ],
+    "physicalTabletTested": false
+  },
+  "tests": {
+    "jvm": 16,
+    "node": 8,
+    "hostRecovery": 5,
+    "linuxLifecycle": 8,
+    "linuxLoaderRedFailures": 1,
+    "linuxLoaderGreenFailures": 0,
+    "browserRouteViewportChecks": 22
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "runningProcesses": 10,
+      "stoppedProcesses": 4,
+      "stoppedFds": 252,
+      "onlyBaseTerminalRemains": true
+    },
+    {
+      "cycle": 2,
+      "runningProcesses": 10,
+      "stoppedProcesses": 4,
+      "stoppedFds": 252,
+      "onlyBaseTerminalRemains": true
+    },
+    {
+      "cycle": 3,
+      "runningProcesses": 10,
+      "stoppedProcesses": 4,
+      "stoppedFds": 253,
+      "onlyBaseTerminalRemains": true
+    }
+  ],
+  "serviceRecreation": {
+    "before": {
+      "appPid": "18695",
+      "fdCount": 273,
+      "proot": [
+        "18882",
+        "21180"
+      ],
+      "processCount": 10
+    },
+    "after": {
+      "appPid": "18695",
+      "fdCount": 273,
+      "proot": [
+        "18882",
+        "21753"
+      ],
+      "processCount": 10
+    }
+  },
+  "mcp": {
+    "unauth": 401,
+    "hostileOrigin": 403,
+    "authenticated": 200,
+    "rejectionsCloseConnection": true,
+    "catalogOperations": 57,
+    "excludedLegacyOperationsRejected": true,
+    "allowReturnsDeviceInfo": true,
+    "denyReturnsToolError": true
+  },
+  "ui": {
+    "home": true,
+    "nativePermissionSingleThemedOverlay": true,
+    "nativeDevicePanel": true,
+    "systemDocumentAttachmentBytes": 52,
+    "ofmMetadataStatus": 200,
+    "horizontalOverflow": false,
+    "darkSystemBarIcons": true
+  },
+  "limits": [
+    "No physical tablet tested",
+    "No account login, API key, real model reply or EAC entitlement tested",
+    "Upstream missing Anthropic fonts use loaded Inter/system fallback",
+    "Original Operit workflows are read-only"
+  ]
+}

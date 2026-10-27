@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-27",
+  "source": "5f43cdb",
+  "scope": "Chinese native startup and opt-in sanitized diagnostics",
+  "apk": {
+    "file": "Operit-Harness-arm64-20261027.apk",
+    "bytes": 295463663,
+    "sha256": "98f6d294e03817ffdd429dd878b00c9418aa6e23c34f6750f97558d629ab36fc",
+    "v2SignatureVerified": true,
+    "canonicalBootstrapMatches": true,
+    "sixArchivesVerified": true
+  },
+  "tests": {
+    "jvm": 21,
+    "node": 8,
+    "newJvmRedFailures": 4,
+    "jvmGreenFailures": 0,
+    "gradle": "assembleClone successful40s234tasks"
+  },
+  "device": {
+    "kind": "owned Android16 emulator",
+    "physicalTablet": false,
+    "pixels": [
+      2560,
+      1600
+    ],
+    "density": 2,
+    "retainedDataUpgrade": true,
+    "nativeChineseStartup": true,
+    "defaultDiagnosticsCollapsed": true,
+    "realInstallLockFailure": true,
+    "expandedRealErrorRetained": true,
+    "initialCSIControlsRemoved": true,
+    "retryBootsAndPreservesWorkspace": true,
+    "cleanFirstInstallBooted": true,
+    "realWebViewConnectionFailure": true,
+    "pageDiagnosticSurvivesPermissionRefresh": true,
+    "testNetworkRuleRemoved": true,
+    "reloadRecovered": true
+  },
+  "limits": [
+    "No physical tablet tested",
+    "No model account/API key/reply tested",
+    "Official web language preference remains user-controlled",
+    "Technical installer diagnostics remain original language when explicitly expanded"
+  ]
+}

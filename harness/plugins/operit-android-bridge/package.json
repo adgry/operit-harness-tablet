@@ -1,0 +1,10 @@
+{
+  "name": "operit-android-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Authenticated Operit native tools for the official full DSH profile",
+  "license": "MIT",
+  "files": ["cordis.patch.yml"],
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } }
+}
